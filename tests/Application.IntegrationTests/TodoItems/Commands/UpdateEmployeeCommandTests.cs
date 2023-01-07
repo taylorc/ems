@@ -2,6 +2,7 @@
 using AutoFixture;
 using Ems.Application.Employee.Commands.CreateEmployee;
 using Ems.Application.Employee.Commands.UpdateEmployee;
+using Ems.Application.IntegrationTests.AutoFixture;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -18,15 +19,11 @@ public class UpdateEmployeeCommandTests : BaseTestFixture
     //     await FluentActions.Invoking(() => SendAsync(command)).Should().ThrowAsync<NotFoundException>();
     // }
 
-    [Test]
-    public async Task ShouldUpdateTodoItem()
+    [Test, EmsAutoData]
+    public async Task ShouldUpdateTodoItem(CreateEmployeeCommand employee)
     {
-        Fixture fixture = new();
-        var employee = fixture.Create<CreateEmployeeCommand>();
-        employee.Title = 1;
-        employee.Gender = 1;
-        employee.EmployeeType = 0;
-        employee.State = 1;
+        employee.Postcode = "3977";
+        employee.Email = "test@test.com";
         employee.ReportIds = new List<int>();
         employee.Email = "test1@test.com";
 

@@ -12,13 +12,13 @@ public class CreateEmployeeCommandValidator : AbstractValidator<CreateEmployeeCo
 
         RuleFor(v => v.LastName)
             .NotNull()
-            .Length(150);
+            .MaximumLength(150);
         RuleFor(v => v.FirstName)
             .NotNull()
-            .Length(150);
+            .MaximumLength(150);
         RuleFor(v => v.City)
             .NotNull()
-            .Length(150);
+            .MaximumLength(150);
 
         RuleFor(v => v.Email)
             .NotNull()
@@ -26,7 +26,7 @@ public class CreateEmployeeCommandValidator : AbstractValidator<CreateEmployeeCo
         
         RuleFor(v => v.Country)
             .NotNull()
-            .Length(150);
+            .MaximumLength(150);
         
         RuleFor(v => v.EmployeeType)
             .Must(v => EmployeeType.TryFromValue(v, out _));
@@ -36,17 +36,17 @@ public class CreateEmployeeCommandValidator : AbstractValidator<CreateEmployeeCo
         
         RuleFor(v => v.MiddleName)
             .NotNull()
-            .Length(150);
+            .MaximumLength(150);
         RuleFor(v => v.Phone)
             .NotNull()
-            .Length(150);
+            .MaximumLength(150);
         RuleFor(v => v.Postcode)
             .NotNull()
-            .Length(4);
+            .MaximumLength(4);
         RuleFor(v => v.State)
             .Must(v => State.TryFromValue(v, out _));;
         RuleFor(v => v.Street)
             .NotNull()
-            .Length(150);
+            .MaximumLength(150);
     }
 }

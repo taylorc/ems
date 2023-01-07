@@ -1,6 +1,7 @@
 ﻿using AutoFixture.NUnit3;
 using Ems.Application.Common.Exceptions;
 using Ems.Application.Employee.Commands.CreateEmployee;
+using Ems.Application.IntegrationTests.AutoFixture;
 using Ems.Domain.Enums;
 using FluentAssertions;
 using NUnit.Framework;
@@ -20,13 +21,11 @@ public class CreateEmployeeTests : BaseTestFixture
             SendAsync(command)).Should().ThrowAsync<ValidationException>();
     }
 
-    [Test, AutoData]
+    [Test, EmsAutoData]
     public async Task ShouldCreateEmployee(CreateEmployeeCommand command)
     {
-        command.Title = 1;
-        command.Gender = 1;
-        command.EmployeeType = 0;
-        command.State = 1;
+        command.Postcode = "3977";
+        command.Email = "test@test.com";
         command.ReportIds = new List<int>();
 
         var itemId = await SendAsync(command);
@@ -39,6 +38,6 @@ public class CreateEmployeeTests : BaseTestFixture
         item.LastModifiedBy.Should().Be("SYSTEM");
         item.LastModified.Should().NotBeNull();
         item.LastModified.Should().BeCloseTo(DateTime.Now, TimeSpan.FromMilliseconds(10000));
-        item.Gender.Should().Be(Gender.Female);
+        item.Gender.Value.Should().Be(command.Gender);
     }
 }
