@@ -1,4 +1,5 @@
 ﻿using AutoFixture.NUnit3;
+using Ems.Application.Common.Exceptions;
 using Ems.Application.Employee.Commands.CreateEmployee;
 using Ems.Domain.Enums;
 using FluentAssertions;
@@ -10,14 +11,14 @@ using static Testing;
 
 public class CreateEmployeeTests : BaseTestFixture
 {
-    // [Test]
-    // public async Task ShouldRequireMinimumFields()
-    // {
-    //     var command = new CreateTodoItemCommand();
-    //
-    //     await FluentActions.Invoking(() =>
-    //         SendAsync(command)).Should().ThrowAsync<ValidationException>();
-    // }
+    [Test]
+    public async Task ShouldRequireMinimumFields()
+    {
+        var command = new CreateEmployeeCommand();
+    
+        await FluentActions.Invoking(() =>
+            SendAsync(command)).Should().ThrowAsync<ValidationException>();
+    }
 
     [Test, AutoData]
     public async Task ShouldCreateEmployee(CreateEmployeeCommand command)

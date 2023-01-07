@@ -11,7 +11,7 @@ public class UpdateEmployeeCommandValidator : AbstractValidator<UpdateEmployeeCo
     public UpdateEmployeeCommandValidator()
     {
         RuleFor(v => v.Title)
-            .Must(v=> EmployeeType.TryFromValue(v.Value, out _))
+            .Must(v=> Title.TryFromValue(v.Value, out _))
             .When(x=>x.Title!=null, ApplyConditionTo.CurrentValidator);
 
         // RuleFor(v => v.LastName)
