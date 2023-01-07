@@ -15,6 +15,7 @@
 
     <ItemGroup>
       <Folder Include="Events\" />
+      <Folder Include="ValueObjects" />
     </ItemGroup>
 
 </Project>

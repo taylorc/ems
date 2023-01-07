@@ -8,12 +8,16 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        ApplyMappingsFromAssembly(Assembly.GetExecutingAssembly());
-        CreateMap<int, Gender>().ConvertUsing(x=> Domain.Enums.Gender.FromValue(x));
+        CreateMap<int, Gender>().ConvertUsing(x=> Gender.FromValue(x));
         
-        CreateMap<int, Title>().ConvertUsing(x=> Domain.Enums.Title.FromValue(x));
+        CreateMap<int, Title>().ConvertUsing(x=> Title.FromValue(x));
 
-        CreateMap<int, EmployeeType>().ConvertUsing(x => Domain.Enums.EmployeeType.FromValue(x));
+        CreateMap<int, EmployeeType>().ConvertUsing(x => EmployeeType.FromValue(x));
+        
+        CreateMap<int, State>().ConvertUsing(x => State.FromValue(x));
+        
+        ApplyMappingsFromAssembly(Assembly.GetExecutingAssembly());
+       
     }
 
     private void ApplyMappingsFromAssembly(Assembly assembly)

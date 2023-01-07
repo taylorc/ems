@@ -1,10 +1,7 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using System.Security.Cryptography.X509Certificates;
-using AutoMapper;
+﻿using AutoMapper;
 using Ems.Application.Common.Interfaces;
 using Ems.Application.Common.Mappings;
-using Ems.Domain.Enums;
-using Ems.Domain.ValueObjects;
+
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,11 +34,6 @@ public record CreateEmployeeCommand : IRequest<int>, IMapTo<Domain.Entities.Empl
     {
 
         profile.CreateMap<CreateEmployeeCommand, Domain.Entities.Employee>()
-            .ForMember(d => d.Address, s =>
-            {
-                s.MapFrom(x=>new Address(x.Street, x.City, Ems.Domain.Enums.State.FromValue(x.State), 
-                    x.Country, x.Postcode));
-            })
             .ForMember(x=>x.Manager, s=>s.Ignore())
             .ForMember(d => d.Created, s => s.Ignore())
             .ForMember(d => d.CreatedBy, s => s.Ignore())

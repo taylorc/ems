@@ -2,7 +2,6 @@
 using AutoFixture;
 using Ems.Application.Employee.Commands.CreateEmployee;
 using Ems.Application.Employee.Commands.UpdateEmployee;
-using Ems.Domain.ValueObjects;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -27,7 +26,7 @@ public class UpdateTodoItemTests : BaseTestFixture
         employee.Title = 1;
         employee.Gender = 1;
         employee.EmployeeType = 0;
-        employee.State = 0;
+        employee.State = 1;
         employee.ReportIds = new List<int>();
         employee.Email = "test1@test.com";
 

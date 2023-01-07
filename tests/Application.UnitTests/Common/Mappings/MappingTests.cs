@@ -1,9 +1,11 @@
 ﻿using System.Runtime.Serialization;
+using AutoFixture.NUnit3;
 using AutoMapper;
 using Ems.Application.Common.Mappings;
 using Ems.Application.Employee.Commands.CreateEmployee;
 using NUnit.Framework;
 using Ems.Domain.Enums;
+using FluentAssertions;
 
 namespace Ems.Application.UnitTests.Common.Mappings;
 
@@ -33,6 +35,22 @@ public class MappingTests
         var instance = GetInstanceOf(source);
 
         _mapper.Map(instance, source, destination);
+    }
+
+    [Test, AutoData]
+    public void ShouldMapState(CreateEmployeeCommand command)
+    {
+        command.State = 1;
+        command.Title = 0;
+        command.EmployeeType = 0;
+        command.Gender = 0;
+
+        var employee = _mapper.Map<CreateEmployeeCommand, Domain.Entities.Employee>(command);
+
+        employee.Title.Should().NotBeNull();
+        employee.State.Should().NotBeNull();
+        
+        employee.State.Should().Be(State.SouthAustralia);
     }
 
     private object GetInstanceOf(Type type)

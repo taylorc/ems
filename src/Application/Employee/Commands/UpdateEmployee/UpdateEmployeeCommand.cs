@@ -3,7 +3,6 @@ using Ems.Application.Common.Exceptions;
 using Ems.Application.Common.Interfaces;
 using Ems.Application.Common.Mappings;
 using Ems.Domain.Enums;
-using Ems.Domain.ValueObjects;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -65,8 +64,13 @@ public class UpdateEmployeeCommandHandler : IRequestHandler<UpdateEmployeeComman
         if(!string.IsNullOrEmpty(request.Email)) entity.Email = request.Email;
         if(request.Gender!=null)entity.Gender = request.Gender;
         if(request.EmployeeType!=null)entity.EmployeeType = request.EmployeeType;
-        if(!string.IsNullOrEmpty(request.Street) && request.State.HasValue)  entity.Address = new Address(request.Street, request.City, State.FromValue(request.State.Value), request.Country,
-            request.Postcode);
+        if(!string.IsNullOrEmpty(request.Street) && request.State.HasValue)  {
+            entity.Street = request.Street;
+            entity.City = request.City;
+            entity.Postcode = request.Postcode;
+            request.State = State.FromValue(request.State.Value);
+            request.Country = request.Country;
+        }
         if(request.IsAdmin.HasValue) entity.IsAdmin = request.IsAdmin.Value;
         
         if(!string.IsNullOrEmpty(request.MiddleName)) entity.MiddleName = request.MiddleName;

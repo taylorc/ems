@@ -1,5 +1,4 @@
 ﻿using Ems.Domain.Entities;
-using Ems.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,7 +13,5 @@ public class EmployeeConfiguration: IEntityTypeConfiguration<Employee>
         builder
             .HasMany(e => e.Reports)
             .WithOne(e => e.Manager);
-
-        builder.OwnsOne(x => x.Address);
     }
 }

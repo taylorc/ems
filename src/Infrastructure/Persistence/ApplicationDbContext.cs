@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using Ems.Application.Common.Interfaces;
 using Ems.Domain.Entities;
-using Ems.Domain.ValueObjects;
 using Ems.Infrastructure.Persistence.Interceptors;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -28,7 +27,6 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Ignore<Address>();
         
         //add support for persiting smart enums
         builder.ConfigureSmartEnum();
