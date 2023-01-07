@@ -9,7 +9,7 @@ namespace Ems.Application.IntegrationTests.TodoItems.Commands;
 
 using static Testing;
 
-public class UpdateTodoItemTests : BaseTestFixture
+public class UpdateEmployeeCommandTests : BaseTestFixture
 {
     // [Test]
     // public async Task ShouldRequireValidTodoItemId()
