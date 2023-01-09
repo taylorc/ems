@@ -1,12 +1,10 @@
-﻿using AutoFixture.NUnit3;
-using Ems.Application.Common.Exceptions;
+﻿using Ems.Application.Common.Exceptions;
 using Ems.Application.Employee.Commands.CreateEmployee;
 using Ems.Application.IntegrationTests.AutoFixture;
-using Ems.Domain.Enums;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Ems.Application.IntegrationTests.TodoItems.Commands;
+namespace Ems.Application.IntegrationTests.Employee.Commands;
 
 using static Testing;
 

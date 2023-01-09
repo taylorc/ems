@@ -11,7 +11,7 @@ public class UpdateEmployeeCommandValidator : AbstractValidator<UpdateEmployeeCo
     public UpdateEmployeeCommandValidator()
     {
         RuleFor(v => v.Title)
-            .Must(v=> Title.TryFromValue(v.Value, out _))
+            .Must(v=> Title.TryFromValue(v!.Value, out _))
             .When(x=>x.Title!=null, ApplyConditionTo.CurrentValidator);
 
         // RuleFor(v => v.LastName)
@@ -27,10 +27,10 @@ public class UpdateEmployeeCommandValidator : AbstractValidator<UpdateEmployeeCo
         // RuleFor(v => v.Country)
         //     .NotNull();
         RuleFor(v => v.EmployeeType)
-            .Must(v => EmployeeType.TryFromValue(v.Value, out _))
+            .Must(v => EmployeeType.TryFromValue(v!.Value, out _))
             .When(x=>x.EmployeeType!=null, ApplyConditionTo.CurrentValidator);
         RuleFor(v => v.Gender)
-            .Must(v => Gender.TryFromValue(v.Value, out _))
+            .Must(v => Gender.TryFromValue(v!.Value, out _))
             .When(x=>x.Gender!=null, ApplyConditionTo.CurrentValidator);
         // RuleFor(v => v.IsAdmin)
         //     .NotNull();

@@ -1,12 +1,10 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using AutoFixture;
-using Ems.Application.Employee.Commands.CreateEmployee;
+﻿using Ems.Application.Employee.Commands.CreateEmployee;
 using Ems.Application.Employee.Commands.UpdateEmployee;
 using Ems.Application.IntegrationTests.AutoFixture;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Ems.Application.IntegrationTests.TodoItems.Commands;
+namespace Ems.Application.IntegrationTests.Employee.Commands;
 
 using static Testing;
 
@@ -23,7 +21,6 @@ public class UpdateEmployeeCommandTests : BaseTestFixture
     public async Task ShouldUpdateTodoItem(CreateEmployeeCommand employee)
     {
         employee.Postcode = "3977";
-        employee.Email = "test@test.com";
         employee.ReportIds = new List<int>();
         employee.Email = "test1@test.com";
 

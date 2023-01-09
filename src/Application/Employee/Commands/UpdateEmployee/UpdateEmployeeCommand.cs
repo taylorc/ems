@@ -71,6 +71,7 @@ public class UpdateEmployeeCommandHandler : IRequestHandler<UpdateEmployeeComman
             request.State = State.FromValue(request.State.Value);
             request.Country = request.Country;
         }
+        
         if(request.IsAdmin.HasValue) entity.IsAdmin = request.IsAdmin.Value;
         
         if(!string.IsNullOrEmpty(request.MiddleName)) entity.MiddleName = request.MiddleName;

@@ -3,6 +3,7 @@ using AutoFixture.NUnit3;
 using AutoMapper;
 using Ems.Application.Common.Mappings;
 using Ems.Application.Employee.Commands.CreateEmployee;
+using Ems.Application.Organisation.Commands.CreateOrganisation;
 using NUnit.Framework;
 using Ems.Domain.Enums;
 using FluentAssertions;
@@ -30,6 +31,7 @@ public class MappingTests
 
     [Test]
     [TestCase(typeof(CreateEmployeeCommand), typeof(Domain.Entities.Employee))]
+    [TestCase(typeof(CreateOrganisationCommand), typeof(Domain.Entities.Organisation))]
     public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
     {
         var instance = GetInstanceOf(source);

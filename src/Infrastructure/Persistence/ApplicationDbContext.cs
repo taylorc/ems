@@ -24,6 +24,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     }
 
     public DbSet<Employee> Employees => Set<Employee>();
+    public DbSet<Organisation> Organisations => Set<Organisation>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

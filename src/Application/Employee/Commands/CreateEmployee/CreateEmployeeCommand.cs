@@ -9,19 +9,19 @@ namespace Ems.Application.Employee.Commands.CreateEmployee;
 
 public record CreateEmployeeCommand : IRequest<int>, IMapTo<Domain.Entities.Employee>
 {
-    public string Street { get; set; }
-    public string City { get; set; }
+    public string Street { get; set; } = null!;
+    public string City { get; set; }= null!;
     public int State { get; set; }
-    public string Country { get; set; }
-    public string Postcode { get; set; }
+    public string Country { get; set; }= null!;
+    public string Postcode { get; set; }= null!;
 
-    public string? FirstName { get; set; }
-    public string? MiddleName { get; set; }
-    public string? LastName { get; set; }
+    public string? FirstName { get; set; }= null!;
+    public string? MiddleName { get; set; }= null!;
+    public string? LastName { get; set; }= null!;
     public int Title { get; set; }
     public string? FaxNumber { get; set; }
-    public string? Phone { get; set; }
-    public string? Email { get; set; }
+    public string? Phone { get; set; }= null!;
+    public string? Email { get; set; }= null!;
     public int Gender { get; set; }
     public int EmployeeType { get; set; }
     public bool IsAdmin { get; set; }
